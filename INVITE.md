@@ -10,10 +10,10 @@
 - Tap the address to open **Google Maps**
 - 🔊 Optional jungle ambience toggle (top-right)
 
-## 📸 Add Ezekiel's photo
-Save his photo as **`ezekiel.jpg`** in the same folder as `index.html`
-(commit it to the repo root). It appears automatically in the round frame.
-Until then, a styled placeholder shows.
+## 📸 Ezekiel's photo
+His photo lives at **`ezekiel.png`** in the repo root and appears automatically
+in the round frame. To swap it, replace that file (keep the same name), or change
+the `src` in `index.html`. Until a file exists, a styled placeholder shows.
 
 ## 🌐 Share link
 A GitHub Actions workflow (`.github/workflows/pages.yml`) publishes the invite
