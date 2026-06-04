@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ezekiel's 6th Birthday 🦎</title>
+<meta name="description" content="You're invited to Ezekiel's 6th Birthday — Friday 3 July at 3pm, 16 Bowes Place, Doonside. Live reptile show!" />
+
+<!-- Social share preview -->
+<meta property="og:title" content="Ezekiel's 6th Birthday 🦎" />
+<meta property="og:description" content="Friday 3 July at 3pm · 16 Bowes Place, Doonside · LIVE REPTILE SHOW!" />
+<meta property="og:type" content="website" />
+
+<style>
+  :root{
+    --green:#39d353;
+    --green-glow:#5cff7a;
+    --cream:#ece5d8;
+    --muted:#b9b2a4;
+    --bg:#000;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:"Trebuchet MS","Segoe UI",system-ui,-apple-system,sans-serif;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+
+  /* ===== Animated reptile background ===== */
+  .critters{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .critter{
+    position:absolute;
+    font-size:clamp(28px,6vw,56px);
+    opacity:.18;
+    filter:drop-shadow(0 0 6px rgba(57,211,83,.25));
+    will-change:transform;
+  }
+  /* snake slithers across */
+  .snake{top:8%;left:-12%;animation:slither 26s linear infinite;}
+  @keyframes slither{
+    0%{transform:translateX(-10vw) rotate(0deg);}
+    50%{transform:translateX(55vw) rotate(8deg);}
+    100%{transform:translateX(120vw) rotate(0deg);}
+  }
+  /* lizard crawls bottom */
+  .lizard{bottom:6%;left:-15%;animation:crawl 34s linear infinite;animation-delay:4s;}
+  @keyframes crawl{
+    0%{transform:translateX(-10vw) scaleX(1);}
+    49%{transform:translateX(115vw) scaleX(1);}
+    50%{transform:translateX(115vw) scaleX(-1);}
+    100%{transform:translateX(-10vw) scaleX(-1);}
+  }
+  /* turtle floats */
+  .turtle{top:55%;right:-12%;animation:paddle 40s linear infinite;animation-delay:2s;}
+  @keyframes paddle{
+    0%{transform:translateX(10vw) translateY(0);}
+    50%{transform:translateX(-60vw) translateY(-18px);}
+    100%{transform:translateX(-120vw) translateY(0);}
+  }
+  /* frog hops */
+  .frog{top:30%;right:8%;animation:hop 5s ease-in-out infinite;}
+  @keyframes hop{
+    0%,100%{transform:translateY(0) scale(1);}
+    35%{transform:translateY(-26px) scale(1.05,.95);}
+    70%{transform:translateY(0) scale(1.05,.92);}
+  }
+  .gecko{top:72%;left:6%;animation:wiggle 7s ease-in-out infinite;}
+  @keyframes wiggle{
+    0%,100%{transform:rotate(-6deg);}
+    50%{transform:rotate(6deg);}
+  }
+
+  /* ===== Layout ===== */
+  .wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:32px 22px 60px;}
+
+  .card{
+    background:linear-gradient(180deg,rgba(8,12,8,.78),rgba(0,0,0,.86));
+    border:1px solid rgba(57,211,83,.28);
+    border-radius:24px;
+    padding:30px 24px 34px;
+    box-shadow:0 0 50px rgba(57,211,83,.10), inset 0 0 60px rgba(0,0,0,.6);
+    backdrop-filter:blur(2px);
+  }
+
+  .eyebrow{
+    text-align:center;letter-spacing:3px;text-transform:uppercase;
+    font-size:12px;color:var(--green);opacity:.85;margin-bottom:6px;
+  }
+
+  h1{
+    text-align:center;
+    color:var(--green);
+    font-size:clamp(34px,9vw,60px);
+    line-height:1.02;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    text-shadow:0 0 18px rgba(57,211,83,.55),0 0 40px rgba(57,211,83,.25);
+    animation:pulseGlow 3.2s ease-in-out infinite;
+  }
+  h1 sup{font-size:.5em;}
+  @keyframes pulseGlow{
+    0%,100%{text-shadow:0 0 16px rgba(57,211,83,.5),0 0 38px rgba(57,211,83,.2);}
+    50%{text-shadow:0 0 26px rgba(92,255,122,.85),0 0 60px rgba(57,211,83,.45);}
+  }
+
+  /* ===== Photo ===== */
+  .photo-frame{
+    width:170px;height:170px;margin:22px auto 6px;
+    border-radius:50%;
+    border:3px solid var(--green);
+    box-shadow:0 0 24px rgba(57,211,83,.45);
+    overflow:hidden;position:relative;
+    background:radial-gradient(circle at 50% 40%,#16321b,#050805);
+    animation:float 6s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  .photo-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo-frame .placeholder{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    height:100%;text-align:center;padding:10px;color:var(--muted);font-size:11px;line-height:1.4;
+  }
+  .photo-frame .placeholder .big{font-size:40px;margin-bottom:6px;}
+
+  .when{
+    text-align:center;margin-top:18px;
+    font-size:clamp(24px,6.5vw,38px);font-weight:800;color:var(--cream);
+  }
+  .where{
+    text-align:center;margin-top:4px;font-size:clamp(18px,5vw,26px);color:var(--cream);
+  }
+  .where a{color:var(--cream);text-decoration:none;border-bottom:1px dashed rgba(57,211,83,.5);}
+  .where a:hover{color:var(--green-glow);}
+  .pin{font-size:.85em;}
+
+  .blurb{
+    text-align:center;margin:22px auto 4px;max-width:30em;
+    color:var(--muted);font-size:clamp(15px,4vw,18px);line-height:1.7;
+  }
+  .blurb strong{color:var(--green-glow);}
+  .show{color:var(--green);font-weight:800;letter-spacing:1px;}
+
+  /* ===== Countdown ===== */
+  .countdown{margin:28px auto 6px;}
+  .countdown .label{text-align:center;color:var(--green);text-transform:uppercase;letter-spacing:2px;font-size:12px;margin-bottom:10px;}
+  .cd-grid{display:flex;gap:10px;justify-content:center;}
+  .cd-cell{
+    background:rgba(57,211,83,.07);border:1px solid rgba(57,211,83,.3);
+    border-radius:14px;padding:12px 10px;min-width:64px;text-align:center;
+  }
+  .cd-cell .num{font-size:clamp(24px,7vw,34px);font-weight:800;color:var(--cream);font-variant-numeric:tabular-nums;}
+  .cd-cell .unit{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-top:2px;}
+  .cd-msg{text-align:center;color:var(--green-glow);font-size:20px;font-weight:800;}
+
+  /* ===== Buttons ===== */
+  .actions{display:flex;flex-direction:column;gap:12px;margin:30px auto 8px;max-width:380px;}
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    padding:15px 18px;border-radius:14px;text-decoration:none;
+    font-size:17px;font-weight:700;cursor:pointer;border:none;
+    transition:transform .12s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:var(--green);color:#04210b;box-shadow:0 0 22px rgba(57,211,83,.45);}
+  .btn-primary:hover{background:var(--green-glow);}
+  .btn-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(57,211,83,.5);}
+  .btn-ghost:hover{border-color:var(--green);color:var(--green-glow);}
+
+  .rsvp-note{text-align:center;color:var(--muted);margin-top:18px;font-size:15px;line-height:1.6;}
+  .rsvp-note .name{color:var(--green-glow);font-weight:700;}
+  .deadline{color:var(--cream);}
+
+  .footer{text-align:center;margin-top:26px;color:rgba(185,178,164,.55);font-size:12px;}
+
+  /* ===== Sound toggle ===== */
+  .sound-toggle{
+    position:fixed;top:14px;right:14px;z-index:5;
+    width:46px;height:46px;border-radius:50%;
+    background:rgba(8,12,8,.8);border:1px solid rgba(57,211,83,.4);
+    color:var(--green);font-size:20px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 16px rgba(57,211,83,.2);
+  }
+  .sound-toggle:hover{color:var(--green-glow);border-color:var(--green);}
+
+  @media (prefers-reduced-motion: reduce){
+    .critter,.photo-frame,h1{animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<button id="soundBtn" class="sound-toggle" title="Toggle jungle ambience" aria-label="Toggle sound">🔇</button>
+
+<div class="critters" aria-hidden="true">
+  <span class="critter snake">🐍</span>
+  <span class="critter lizard">🦎</span>
+  <span class="critter turtle">🐢</span>
+  <span class="critter frog">🐸</span>
+  <span class="critter gecko">🦎</span>
+</div>
+
+<div class="wrap">
+  <div class="card">
+    <div class="eyebrow">🐍 You're invited 🦎</div>
+    <h1>Ezekiel's<br>6<sup>th</sup> Birthday</h1>
+
+    <!-- Photo: drop a file named ezekiel.jpg next to this page and it appears automatically -->
+    <div class="photo-frame">
+      <img src="ezekiel.jpg" alt="Ezekiel"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="placeholder" style="display:none;">
+        <span class="big">🦎</span>
+        Add a photo:<br>save it as <b>ezekiel.jpg</b><br>next to this page
+      </div>
+    </div>
+
+    <div class="when">Friday, 3 July · 3pm</div>
+    <div class="where">
+      <a id="mapLink" href="https://maps.google.com/?q=16+Bowes+Place+Doonside+NSW"
+         target="_blank" rel="noopener">
+        <span class="pin">📍</span> 16 Bowes Place, Doonside
+      </a>
+    </div>
+
+    <p class="blurb">
+      Slither on over straight from school — join us anytime from <strong>3pm</strong>
+      for afternoon tea and fun. Then at <strong>4pm</strong>, get ready to meet some
+      cold-blooded creatures up close at our very own <span class="show">LIVE REPTILE SHOW!</span>
+      After the show, stay and feast with us for dinner!
+    </p>
+
+    <div class="countdown">
+      <div class="label">Slithering in…</div>
+      <div id="cd" class="cd-grid">
+        <div class="cd-cell"><div class="num" id="d">--</div><div class="unit">Days</div></div>
+        <div class="cd-cell"><div class="num" id="h">--</div><div class="unit">Hours</div></div>
+        <div class="cd-cell"><div class="num" id="m">--</div><div class="unit">Mins</div></div>
+        <div class="cd-cell"><div class="num" id="s">--</div><div class="unit">Secs</div></div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="sms:0449141108?&body=Hi%20Ashby!%20We'd%20love%20to%20come%20to%20Ezekiel's%206th%20birthday.%20RSVP%3A%20">
+        💬 Text RSVP to Ashby
+      </a>
+      <a class="btn btn-ghost" href="tel:0449141108">📞 Call Ashby — 0449 141 108</a>
+      <button class="btn btn-ghost" id="calBtn">🗓️ Add to Calendar</button>
+    </div>
+
+    <p class="rsvp-note">
+      Please RSVP to <span class="name">Ashby on 0449 141 108</span><br>
+      by <span class="deadline">26 June</span> 🐢
+    </p>
+
+    <div class="footer">Made with 💚 for Ezekiel’s big day</div>
+  </div>
+</div>
+
+<script>
+  /* ===== Countdown to Fri 3 July 2026, 3:00pm Sydney (AEST, UTC+10) ===== */
+  var target = new Date("2026-07-03T15:00:00+10:00").getTime();
+  function tick(){
+    var now = Date.now();
+    var diff = target - now;
+    if(diff <= 0){
+      document.getElementById("cd").innerHTML =
+        '<div class="cd-msg">🎉 It\'s party time! 🦎🐍🐢</div>';
+      clearInterval(timer);
+      return;
+    }
+    var d = Math.floor(diff/86400000);
+    var h = Math.floor(diff%86400000/3600000);
+    var m = Math.floor(diff%3600000/60000);
+    var s = Math.floor(diff%60000/1000);
+    document.getElementById("d").textContent = d;
+    document.getElementById("h").textContent = String(h).padStart(2,"0");
+    document.getElementById("m").textContent = String(m).padStart(2,"0");
+    document.getElementById("s").textContent = String(s).padStart(2,"0");
+  }
+  tick();
+  var timer = setInterval(tick,1000);
+
+  /* ===== Add to Calendar (.ics) ===== */
+  document.getElementById("calBtn").addEventListener("click", function(){
+    var ics = [
+      "BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Ezekiel Birthday//EN",
+      "CALSCALE:GREGORIAN","BEGIN:VEVENT",
+      "UID:ezekiel-6th-birthday-2026@invite",
+      "DTSTAMP:20260604T000000Z",
+      "DTSTART;TZID=Australia/Sydney:20260703T150000",
+      "DTEND;TZID=Australia/Sydney:20260703T190000",
+      "SUMMARY:Ezekiel's 6th Birthday 🦎 (Live Reptile Show!)",
+      "LOCATION:16 Bowes Place, Doonside NSW",
+      "DESCRIPTION:From 3pm afternoon tea & fun. 4pm LIVE REPTILE SHOW! Then dinner. RSVP Ashby 0449 141 108 by 26 June.",
+      "END:VEVENT","END:VCALENDAR"
+    ].join("\r\n");
+    var blob = new Blob([ics], {type:"text/calendar"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "Ezekiel-6th-Birthday.ics";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  });
+
+  /* ===== Optional jungle ambience (synthesised, no files) ===== */
+  var audioCtx = null, ambient = null, chirpTimer = null;
+  var soundBtn = document.getElementById("soundBtn");
+  var soundOn = false;
+
+  function startSound(){
+    audioCtx = audioCtx || new (window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state === "suspended") audioCtx.resume();
+
+    // low warm pad
+    var master = audioCtx.createGain();
+    master.gain.value = 0.0;
+    master.connect(audioCtx.destination);
+    master.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 1.5);
+
+    var o1 = audioCtx.createOscillator();
+    var o2 = audioCtx.createOscillator();
+    o1.type = "sine"; o2.type = "sine";
+    o1.frequency.value = 110; o2.frequency.value = 110.6; // gentle beat
+    var padGain = audioCtx.createGain(); padGain.gain.value = 0.35;
+    o1.connect(padGain); o2.connect(padGain); padGain.connect(master);
+    o1.start(); o2.start();
+
+    ambient = {master:master, oscs:[o1,o2]};
+
+    // random bird/cricket chirps
+    function chirp(){
+      if(!soundOn) return;
+      var t = audioCtx.currentTime;
+      var c = audioCtx.createOscillator();
+      var g = audioCtx.createGain();
+      c.type = "triangle";
+      var base = 900 + Math.random()*1400;
+      c.frequency.setValueAtTime(base, t);
+      c.frequency.exponentialRampToValueAtTime(base*1.4, t+0.08);
+      g.gain.setValueAtTime(0.0, t);
+      g.gain.linearRampToValueAtTime(0.08, t+0.02);
+      g.gain.exponentialRampToValueAtTime(0.001, t+0.18);
+      c.connect(g); g.connect(audioCtx.destination);
+      c.start(t); c.stop(t+0.2);
+      chirpTimer = setTimeout(chirp, 600 + Math.random()*2600);
+    }
+    chirp();
+  }
+  function stopSound(){
+    if(chirpTimer) clearTimeout(chirpTimer);
+    if(ambient && audioCtx){
+      ambient.master.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.6);
+      var oscs = ambient.oscs;
+      setTimeout(function(){ oscs.forEach(function(o){ try{o.stop();}catch(e){} }); }, 700);
+      ambient = null;
+    }
+  }
+  soundBtn.addEventListener("click", function(){
+    soundOn = !soundOn;
+    if(soundOn){ soundBtn.textContent = "🔊"; startSound(); }
+    else{ soundBtn.textContent = "🔇"; stopSound(); }
+  });
+</script>
+</body>
+</html>
