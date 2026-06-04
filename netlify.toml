@@ -1,0 +1,11 @@
+# Netlify config for Ezekiel's birthday invite (static site)
+[build]
+  # No build step — it's a plain HTML page. Publish the repo root.
+  publish = "."
+  command = ""
+
+# Friendly headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
