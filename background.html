@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦁 Ezekiel is 6! — Safari Party 🐊</title>
+<style>
+  :root{--font:'Comic Sans MS','Comic Sans','Chalkboard SE','Baloo 2',system-ui,'Segoe UI',sans-serif;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;overflow:hidden;font-family:var(--font);}
+  body{position:relative;cursor:pointer;}
+
+  /* ---------- SKY & SCENE ---------- */
+  .sky{position:fixed;inset:0;z-index:0;
+    background:linear-gradient(180deg,#7fd0ff 0%,#a9e6ff 34%,#e8f7d9 66%,#fff0bf 100%);}
+  .sun{position:fixed;top:6vh;right:9vw;width:20vmin;height:20vmin;border-radius:50%;z-index:1;
+    background:radial-gradient(circle at 50% 50%,#fff6c0 0%,#ffe066 55%,#ffce4d 70%,rgba(255,206,77,0) 72%);
+    animation:sunpulse 5s ease-in-out infinite;}
+  @keyframes sunpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+  .hill{position:fixed;left:-10vw;right:-10vw;border-radius:50%/100% 100% 0 0;z-index:2;}
+  .hill.back{bottom:16vh;height:34vh;background:#8fd07a;}
+  .hill.mid{bottom:8vh;height:30vh;background:#66bd5c;left:-20vw;right:-5vw;}
+  .hill.front{bottom:0;height:22vh;background:#46a94b;left:-5vw;right:-25vw;}
+  .ground{position:fixed;bottom:0;left:0;right:0;height:12vh;background:#3f9e46;z-index:3;}
+
+  .decor{position:fixed;z-index:3;font-size:9vmin;user-select:none;pointer-events:none;
+    filter:drop-shadow(0 3px 3px rgba(0,60,20,.25));}
+  .cloud{z-index:1;font-size:12vmin;opacity:.95;animation:drift linear infinite;}
+  @keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(130vw)}}
+  .tree{bottom:15vh;font-size:16vmin;}
+  .bird{z-index:2;font-size:6vmin;animation:fly linear infinite;}
+  @keyframes fly{from{transform:translateX(-20vw) translateY(0)}50%{transform:translateX(55vw) translateY(-4vh)}to{transform:translateX(130vw) translateY(0)}}
+  .balloon{z-index:4;font-size:11vmin;bottom:-20vh;animation:rise linear infinite;}
+  @keyframes rise{0%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-60vh) rotate(6deg)}100%{transform:translateY(-120vh) rotate(-6deg)}}
+  .walker{bottom:3vh;font-size:12vmin;z-index:4;left:-15vw;animation:walk linear infinite,bob .8s ease-in-out infinite;}
+  @keyframes walk{from{left:-16vw}to{left:116vw}}
+  @keyframes bob{0%,100%{margin-bottom:0}50%{margin-bottom:1.4vh}}
+  .walker.flip{transform:scaleX(-1);}
+
+  /* ---------- CENTER CARD ---------- */
+  .center{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:3vmin;}
+  .panel{background:rgba(255,255,255,.86);backdrop-filter:blur(3px);border-radius:6vmin;padding:4vmin 6vmin;
+    box-shadow:0 2vmin 5vmin rgba(0,60,30,.3);max-width:min(1100px,92vw);border:1vmin solid #fff;}
+  h1{font-size:9vmin;color:#173a2e;text-shadow:0 4px 0 #ffd76a;line-height:1.02;}
+  .sub{font-size:4.4vmin;color:#2b6b4f;margin-top:1vmin;}
+  .cake{font-size:5vmin;margin-top:1vmin;animation:bob2 1.4s ease-in-out infinite;}
+  @keyframes bob2{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.4vmin)}}
+  .btnrow{display:flex;gap:2.5vmin;justify-content:center;flex-wrap:wrap;margin-top:2.5vmin;}
+  .btn{font-family:var(--font);border:none;cursor:pointer;border-radius:99px;font-size:4vmin;font-weight:bold;
+    padding:.5em 1.3em;color:#fff;background:linear-gradient(180deg,#57d98a,#2ecc71);
+    box-shadow:0 .8vmin 0 #1f9b53,0 1.4vmin 2.4vmin rgba(0,0,0,.2);transition:transform .08s;text-decoration:none;display:inline-block;}
+  .btn:active{transform:translateY(.5vmin);}
+  .btn.blue{background:linear-gradient(180deg,#49c8e0,#1fb6c1);box-shadow:0 .8vmin 0 #14808c,0 1.4vmin 2.4vmin rgba(0,0,0,.2);}
+
+  /* sound toggle */
+  #soundToggle{position:fixed;top:2.4vmin;right:2.4vmin;z-index:20;background:rgba(255,255,255,.85);border:none;
+    font-family:var(--font);font-size:3vmin;font-weight:bold;color:#2b6b4f;border-radius:99px;padding:.4em 1em;cursor:pointer;
+    box-shadow:0 .6vmin 1.4vmin rgba(0,0,0,.2);}
+
+  /* tap-to-start overlay */
+  #tap{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;flex-direction:column;
+    background:rgba(23,58,46,.78);color:#fff;text-align:center;padding:4vmin;}
+  #tap .big{font-size:8vmin;text-shadow:0 4px 0 #ffd76a;line-height:1.05;}
+  #tap .hint{font-size:4.4vmin;margin-top:2vmin;animation:bob2 1.2s ease-in-out infinite;}
+  #tap.hide{display:none;}
+  .hidden{display:none!important;}
+</style>
+</head>
+<body>
+  <div class="sky"></div>
+  <div class="sun"></div>
+
+  <!-- clouds -->
+  <div class="decor cloud" style="top:8vh;animation-duration:70s">☁️</div>
+  <div class="decor cloud" style="top:20vh;animation-duration:95s;animation-delay:-30s;font-size:9vmin">☁️</div>
+  <div class="decor cloud" style="top:3vh;animation-duration:120s;animation-delay:-60s">⛅</div>
+  <!-- birds -->
+  <div class="decor bird" style="top:16vh;animation-duration:34s">🐦</div>
+  <div class="decor bird" style="top:22vh;animation-duration:44s;animation-delay:-12s">🕊️</div>
+
+  <div class="hill back"></div>
+  <div class="hill mid"></div>
+  <!-- trees on the horizon -->
+  <div class="decor tree" style="left:4vw">🌴</div>
+  <div class="decor tree" style="left:18vw;font-size:13vmin">🌳</div>
+  <div class="decor tree" style="right:6vw">🌴</div>
+  <div class="decor tree" style="right:20vw;font-size:12vmin">🌳</div>
+  <div class="hill front"></div>
+  <div class="ground"></div>
+
+  <!-- roaming animals along the ground -->
+  <div class="decor walker" style="animation-duration:38s">🦁</div>
+  <div class="decor walker flip" style="animation-duration:52s;animation-delay:-14s;font-size:14vmin">🐘</div>
+  <div class="decor walker" style="animation-duration:30s;animation-delay:-8s">🦓</div>
+  <div class="decor walker" style="animation-duration:60s;animation-delay:-25s;font-size:9vmin">🐊</div>
+  <div class="decor walker flip" style="animation-duration:26s;animation-delay:-5s;font-size:8vmin">🐒</div>
+  <div class="decor walker" style="animation-duration:70s;animation-delay:-40s;font-size:7vmin">🐢</div>
+
+  <!-- balloons -->
+  <div class="decor balloon" style="left:8vw;animation-duration:16s">🎈</div>
+  <div class="decor balloon" style="left:28vw;animation-duration:20s;animation-delay:-6s">🎈</div>
+  <div class="decor balloon" style="right:14vw;animation-duration:18s;animation-delay:-10s">🎈</div>
+  <div class="decor balloon" style="right:32vw;animation-duration:23s;animation-delay:-3s">🎈</div>
+
+  <button id="soundToggle" onclick="toggleSound(event)">🔊 Party sounds: ON</button>
+
+  <div class="center">
+    <div class="panel">
+      <h1>🦁🐊 EZEKIEL IS 6! 🎉</h1>
+      <div class="sub">Animal &amp; Reptile Safari Party</div>
+      <div class="cake">🎂 Welcome to the wildest party in the jungle! 🎈</div>
+      <div class="btnrow">
+        <a class="btn" href="index.html">▶ Start the Game</a>
+        <button class="btn blue" onclick="burst(120)">🎉 Confetti!</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="tap" onclick="startParty()">
+    <div class="big">🦁🐘🐊  Ezekiel's Safari Party  🐒🦓</div>
+    <div class="hint">👆 Tap anywhere to turn on the party sounds!</div>
+  </div>
+
+  <canvas id="cf" style="position:fixed;inset:0;z-index:15;pointer-events:none;"></canvas>
+
+<script>
+/* ---------- ambient animal-sound party bed ---------- */
+const SOUNDS=['dog','cat','cow','duck','pig','lion','tiger','elephant','monkey','zebra','hyena','snake','crocodile'];
+let AC=null, pad=null, ambTimer=null, soundOn=true, started=false;
+function ac(){ if(!AC) AC=new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==='suspended')AC.resume(); return AC; }
+function makePad(){ // soft warm drone for atmosphere
+  const c=ac(), out=c.createGain(); out.gain.value=0.06; out.connect(c.destination);
+  const freqs=[130.81,196.00,261.63]; const oscs=[];
+  freqs.forEach((f,i)=>{ const o=c.createOscillator(),g=c.createGain(),lfo=c.createOscillator(),lg=c.createGain();
+    o.type='sine'; o.frequency.value=f*(i===2?1.003:1); g.gain.value=0.5;
+    lfo.frequency.value=0.08+i*0.03; lg.gain.value=0.25; lfo.connect(lg).connect(g.gain);
+    o.connect(g).connect(out); o.start(); lfo.start(); oscs.push(o,lfo); });
+  return { stop(){ out.gain.setTargetAtTime(0,c.currentTime,.3); setTimeout(()=>{oscs.forEach(o=>{try{o.stop()}catch(e){}}); try{out.disconnect()}catch(e){}},600); } };
+}
+const cache={};
+function playCritter(){
+  if(!soundOn) return;
+  const id=SOUNDS[Math.floor(Math.random()*SOUNDS.length)];
+  let a=cache[id]; if(!a){ a=new Audio('assets/sounds/'+id+'.mp3'); cache[id]=a; }
+  a.volume=0.32; a.currentTime=0; a.play().catch(()=>{});
+}
+function scheduleCritter(){ ambTimer=setTimeout(()=>{ playCritter(); scheduleCritter(); }, 3500+Math.random()*5500); }
+function startParty(){
+  document.getElementById('tap').classList.add('hide');
+  if(started) return; started=true;
+  ac(); if(soundOn){ pad=makePad(); playCritter(); } scheduleCritter();
+}
+function toggleSound(e){
+  if(e) e.stopPropagation();
+  soundOn=!soundOn;
+  const b=document.getElementById('soundToggle');
+  b.textContent = soundOn ? '🔊 Party sounds: ON' : '🔇 Party sounds: OFF';
+  if(soundOn){ if(started){ ac(); if(!pad) pad=makePad(); } }
+  else { if(pad){ pad.stop(); pad=null; } }
+}
+// start on first interaction anywhere (browsers need a gesture for audio)
+addEventListener('pointerdown', startParty, {once:false});
+addEventListener('keydown', e=>{ if(e.key===' '||e.key==='Enter'){ startParty(); } });
+
+/* ---------- confetti ---------- */
+const cv=document.getElementById('cf'),cx=cv.getContext('2d');
+let parts=[],raf=false;
+function rs(){cv.width=innerWidth;cv.height=innerHeight;} rs(); addEventListener('resize',rs);
+const COLS=['#f5a623','#ff6b35','#2ecc71','#1fb6c1','#e94b5a','#ffd76a','#ffffff'];
+function burst(n){ for(let i=0;i<n;i++) parts.push({x:Math.random()*innerWidth,y:-20,
+  vx:(Math.random()-.5)*4,vy:Math.random()*3+2,g:.22,s:6+Math.random()*10,r:Math.random()*6,vr:(Math.random()-.5)*.4,
+  col:COLS[Math.floor(Math.random()*COLS.length)]}); if(!raf){raf=true;requestAnimationFrame(loop);} }
+function loop(){ cx.clearRect(0,0,cv.width,cv.height); parts=parts.filter(p=>p.y<cv.height+40);
+  parts.forEach(p=>{p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);
+    cx.fillStyle=p.col;cx.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);cx.restore();});
+  if(parts.length)requestAnimationFrame(loop); else {raf=false;} }
+// gentle confetti every so often for ambience (time-based, no random interval needed)
+setInterval(()=>{ if(!document.hidden) burst(24); }, 6000);
+</script>
+</body>
+</html>

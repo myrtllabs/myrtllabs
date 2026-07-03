@@ -14,7 +14,16 @@ pictures are bundled in `assets/`).
 - **Or deploy it:** drag this whole folder onto [netlify.com/drop](https://app.netlify.com/drop),
   or point your existing Netlify site at this repo (it serves `index.html` at the root).
 
-> Tip: click **"Let's Go!"** once so the browser allows sound to play, then you're set.
+> Tip: click/tap once on the page so the browser allows sound to play, then you're set.
+
+## 🌴 Party background screen (leave it on the TV)
+
+`background.html` is a full-screen animated safari scene ("EZEKIEL IS 6!") that plays soft
+**ambient animal sounds** on a loop — perfect to leave running before and after the game for
+atmosphere. Open `background.html`, tap once to start the sounds, and hit **▶ Start the Game**
+when you're ready. The game's own start and end screens share the same scene and ambience
+(with a 🔊/🔇 toggle top-corner), so the vibe is continuous. Sounds automatically go quiet
+during the guessing rounds so the animal clips are clear.
 
 ## 🎮 How to play (for the grown-up host)
 

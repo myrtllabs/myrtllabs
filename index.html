@@ -24,6 +24,34 @@
   .bg-emoji{position:fixed;font-size:8vmin;opacity:.16;pointer-events:none;z-index:0;animation:float 9s ease-in-out infinite;}
   @keyframes float{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-24px) rotate(8deg)}}
 
+  /* ---- party "attract" savanna scene: shown on title & end screens ---- */
+  #savanna{position:fixed;inset:0;z-index:0;display:none;overflow:hidden;}
+  body.attract #savanna{display:block;}
+  body.attract .bg-emoji{display:none;}
+  #savanna .sky{position:absolute;inset:0;background:linear-gradient(180deg,#7fd0ff 0%,#a9e6ff 34%,#e8f7d9 66%,#fff0bf 100%);}
+  #savanna .sun{position:absolute;top:5vh;right:8vw;width:18vmin;height:18vmin;border-radius:50%;
+    background:radial-gradient(circle,#fff6c0 0%,#ffe066 55%,#ffce4d 70%,rgba(255,206,77,0) 72%);animation:sunpulse 5s ease-in-out infinite;}
+  @keyframes sunpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  #savanna .hill{position:absolute;left:-10vw;right:-10vw;border-radius:50%/100% 100% 0 0;}
+  #savanna .hill.back{bottom:14vh;height:32vh;background:#8fd07a;}
+  #savanna .hill.mid{bottom:7vh;height:28vh;background:#66bd5c;left:-20vw;right:-5vw;}
+  #savanna .hill.front{bottom:0;height:20vh;background:#46a94b;left:-5vw;right:-25vw;}
+  #savanna .ground{position:absolute;bottom:0;left:0;right:0;height:11vh;background:#3f9e46;}
+  #savanna .d{position:absolute;user-select:none;filter:drop-shadow(0 3px 3px rgba(0,60,20,.25));}
+  #savanna .cloud{font-size:11vmin;top:8vh;animation:sdrift linear infinite;}
+  @keyframes sdrift{from{transform:translateX(-32vw)}to{transform:translateX(132vw)}}
+  #savanna .tree{bottom:13vh;font-size:14vmin;}
+  #savanna .walk{bottom:2.5vh;font-size:11vmin;left:-15vw;animation:swalk linear infinite;}
+  @keyframes swalk{from{left:-16vw}to{left:116vw}}
+  #savanna .walk.flip{transform:scaleX(-1);}
+  #savanna .bal{font-size:10vmin;bottom:-22vh;animation:srise linear infinite;}
+  @keyframes srise{0%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-62vh) rotate(5deg)}100%{transform:translateY(-125vh) rotate(-5deg)}}
+  /* party-sound toggle, only on attract screens */
+  #ambToggle{position:fixed;top:2.2vmin;left:2.2vmin;z-index:20;display:none;background:rgba(255,255,255,.85);border:none;
+    font-family:var(--font);font-size:2.6vmin;font-weight:bold;color:#2b6b4f;border-radius:99px;padding:.4em 1em;cursor:pointer;
+    box-shadow:0 .6vmin 1.4vmin rgba(0,0,0,.2);}
+  body.attract #ambToggle{display:block;}
+
   .screen{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;
     padding:2.5vmin;z-index:2;overflow-y:auto;}
   .screen.active{display:flex;animation:pop .35s ease;}
@@ -35,7 +63,7 @@
   .card{background:var(--card);border-radius:5vmin;box-shadow:0 2vmin 5vmin rgba(0,40,20,.35);
     padding:3.5vmin 5vmin;max-width:min(1100px,94vw);width:100%;text-align:center;margin:auto;}
 
-  h1{font-size:8.5vmin;margin:.2em 0;line-height:1.02;color:#173a2e;text-shadow:0 3px 0 #ffd76a;}
+  h1{font-size:7.4vmin;margin:.15em 0;line-height:1.02;color:#173a2e;text-shadow:0 3px 0 #ffd76a;}
   h2{font-size:5.4vmin;margin:.2em 0;}
   .subtitle{font-size:3.2vmin;opacity:.8;margin:.2em 0 1em;}
   p{font-size:3vmin;line-height:1.35;}
@@ -53,7 +81,7 @@
   @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
   .btn[disabled]{opacity:.45;cursor:default;filter:grayscale(.3);}
 
-  .hero{width:34vmin;max-width:280px;border-radius:4vmin;border:1.2vmin solid #fff;
+  .hero{width:26vmin;max-width:220px;border-radius:4vmin;border:1vmin solid #fff;
     box-shadow:0 1.5vmin 3vmin rgba(0,0,0,.3);transform:rotate(-3deg);object-fit:cover;}
   .row{display:flex;gap:2.5vmin;flex-wrap:wrap;justify-content:center;align-items:center;}
   .tag{display:inline-block;background:#173a2e;color:#ffd76a;border-radius:99px;padding:.25em .9em;font-size:2.6vmin;}
@@ -165,6 +193,26 @@
 <body>
 <canvas id="confetti"></canvas>
 
+<!-- party "attract" savanna scene (title & end screens) -->
+<div id="savanna">
+  <div class="sky"></div><div class="sun"></div>
+  <div class="d cloud" style="animation-duration:80s">☁️</div>
+  <div class="d cloud" style="animation-duration:110s;animation-delay:-40s;font-size:8vmin;top:20vh">☁️</div>
+  <div class="hill back"></div><div class="hill mid"></div>
+  <div class="d tree" style="left:4vw">🌴</div>
+  <div class="d tree" style="right:6vw;font-size:12vmin">🌳</div>
+  <div class="hill front"></div><div class="ground"></div>
+  <div class="d walk" style="animation-duration:40s">🦁</div>
+  <div class="d walk flip" style="animation-duration:55s;animation-delay:-14s;font-size:13vmin">🐘</div>
+  <div class="d walk" style="animation-duration:30s;animation-delay:-8s">🦓</div>
+  <div class="d walk" style="animation-duration:64s;animation-delay:-25s;font-size:8vmin">🐊</div>
+  <div class="d walk flip" style="animation-duration:26s;animation-delay:-5s;font-size:7vmin">🐒</div>
+  <div class="d bal" style="left:10vw;animation-duration:17s">🎈</div>
+  <div class="d bal" style="left:30vw;animation-duration:21s;animation-delay:-7s">🎈</div>
+  <div class="d bal" style="right:16vw;animation-duration:19s;animation-delay:-11s">🎈</div>
+</div>
+<button id="ambToggle" onclick="toggleAmbient(event)">🔊 Party sounds: ON</button>
+
 <!-- ============ TITLE ============ -->
 <section id="screen-title" class="screen active">
   <div class="card">
@@ -180,8 +228,11 @@
         <p>💃 <b>Silly breaks</b> — dance, freeze &amp; funny faces!</p>
       </div>
     </div>
-    <div style="margin-top:2vmin"><button class="btn big green" onclick="goSetup()">Let's Go! 🎉</button></div>
-    <div class="esttime">Best on a big screen • 6 teams • about 15–20 minutes</div>
+    <div style="margin-top:2vmin" class="row">
+      <button class="btn big green" onclick="goSetup()">Let's Go! 🎉</button>
+      <a class="btn ghost" href="background.html" style="text-decoration:none;display:inline-block;font-size:3vmin">🌴 Party screen</a>
+    </div>
+    <div class="esttime">Best on a big screen • 6 teams • about 15–20 minutes • 👆 tap to turn on party sounds</div>
   </div>
 </section>
 
@@ -329,6 +380,7 @@ function show(id){
   const inGame = (id==='screen-game');
   document.getElementById('topbar').style.display = (id==='screen-game'||id==='screen-break') ? 'flex':'none';
   document.getElementById('scoreboard').style.display = inGame ? 'flex':'none';
+  document.body.classList.toggle('attract', id==='screen-title'||id==='screen-end');
 }
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
@@ -364,6 +416,31 @@ function makeMusic(){
   return { setFrozen(f){frozen=f;master.gain.setTargetAtTime(f?0:.5,c.currentTime,.02);},
            stop(){clearTimeout(timer);master.gain.setTargetAtTime(0,c.currentTime,.05);setTimeout(()=>{try{master.disconnect();}catch(e){}},300);} };
 }
+
+/* ---- ambient "party bed": soft warm drone + random real animal sounds (title & end) ---- */
+let ambPad=null, ambTimer=null, ambOn=true, ambStarted=false;
+const ambCache={};
+function makeAmbientPad(){
+  const c=ac(), out=c.createGain(); out.gain.value=0.055; out.connect(c.destination);
+  const freqs=[130.81,196.00,261.63], nodes=[];
+  freqs.forEach((f,i)=>{ const o=c.createOscillator(),g=c.createGain(),lfo=c.createOscillator(),lg=c.createGain();
+    o.type='sine'; o.frequency.value=f*(i===2?1.003:1); g.gain.value=0.5;
+    lfo.frequency.value=0.08+i*0.03; lg.gain.value=0.25; lfo.connect(lg).connect(g.gain);
+    o.connect(g).connect(out); o.start(); lfo.start(); nodes.push(o,lfo); });
+  return { stop(){ out.gain.setTargetAtTime(0,c.currentTime,.3); setTimeout(()=>{nodes.forEach(n=>{try{n.stop()}catch(e){}}); try{out.disconnect()}catch(e){}},600); } };
+}
+function ambCritter(){ if(!ambOn)return; const id=ANIMALS[Math.floor(Math.random()*ANIMALS.length)].id;
+  let a=ambCache[id]; if(!a){ a=new Audio('assets/sounds/'+id+'.mp3'); ambCache[id]=a; }
+  a.volume=0.3; a.currentTime=0; a.play().catch(()=>{}); }
+function ambSchedule(){ ambTimer=setTimeout(()=>{ ambCritter(); ambSchedule(); }, 3500+Math.random()*5500); }
+function startAmbient(){ if(ambStarted||!ambOn)return; ambStarted=true; ac(); ambPad=makeAmbientPad(); ambCritter(); ambSchedule(); }
+function stopAmbient(){ ambStarted=false; if(ambTimer){clearTimeout(ambTimer);ambTimer=null;} if(ambPad){ambPad.stop();ambPad=null;} }
+function toggleAmbient(e){ if(e) e.stopPropagation(); ambOn=!ambOn;
+  document.getElementById('ambToggle').textContent = ambOn ? '🔊 Party sounds: ON' : '🔇 Party sounds: OFF';
+  if(ambOn){ startAmbient(); } else { stopAmbient(); } }
+function maybeStartAmbient(){ const id=document.querySelector('.screen.active')?.id;
+  if((id==='screen-title'||id==='screen-end') && ambOn) startAmbient(); }
+addEventListener('pointerdown', maybeStartAmbient);
 
 /* ================= SETUP SCREEN ================= */
 function goSetup(){ ac(); renderTeamFields(); updateEstimate(); show('screen-setup'); }
@@ -405,11 +482,12 @@ function startGame(){
   // preload audio
   ANIMALS.forEach(a=>{ if(!audioCache[a.id]){ const au=new Audio('assets/sounds/'+a.id+'.mp3'); au.preload='auto'; audioCache[a.id]=au; }});
   state={teams, seq:buildSequence(), idx:0, revealed:false};
+  stopAmbient();               // quiet the party bed so guessing sounds are clear
   renderScoreboard();
   show('screen-game');
   route();
 }
-function playAgain(){ state.teams.forEach(t=>t.score=0); state.seq=buildSequence(); state.idx=0; state.revealed=false; renderScoreboard(); show('screen-game'); route(); }
+function playAgain(){ stopAmbient(); state.teams.forEach(t=>t.score=0); state.seq=buildSequence(); state.idx=0; state.revealed=false; renderScoreboard(); show('screen-game'); route(); }
 
 /* ================= SCOREBOARD ================= */
 function renderScoreboard(){
@@ -551,6 +629,7 @@ function showEnd(){
     list.appendChild(row);
   });
   show('screen-end');
+  startAmbient();              // bring the party ambience back for the celebration
   partyConfetti(3200);
 }
 
@@ -592,6 +671,10 @@ addEventListener('keydown',e=>{
     else if(state.revealed){ if(e.key==='0'){award(-1);} else { const n=parseInt(e.key,10); if(n>=1&&n<=state.teams.length) award(n-1);} }
   }
 });
+addEventListener('keydown', maybeStartAmbient);
+
+/* title is the initial screen — turn on the attract scene right away */
+document.body.classList.add('attract');
 </script>
 </body>
 </html>
