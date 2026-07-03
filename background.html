@@ -5,179 +5,202 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🦁 Ezekiel is 6! — Safari Party 🐊</title>
 <style>
-  :root{--font:'Comic Sans MS','Comic Sans','Chalkboard SE','Baloo 2',system-ui,'Segoe UI',sans-serif;}
-  *{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --font:'Comic Sans MS','Comic Sans','Chalkboard SE','Baloo 2',system-ui,'Segoe UI',sans-serif;
+    --ink:#173a2e; --gold:#ffcf4d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
   html,body{height:100%;overflow:hidden;font-family:var(--font);}
-  body{position:relative;cursor:pointer;}
+  body{position:relative;cursor:default;}
 
-  /* ---------- SKY & SCENE ---------- */
+  /* ---------------- SCENE ---------------- */
   .sky{position:fixed;inset:0;z-index:0;
-    background:linear-gradient(180deg,#7fd0ff 0%,#a9e6ff 34%,#e8f7d9 66%,#fff0bf 100%);}
-  .sun{position:fixed;top:6vh;right:9vw;width:20vmin;height:20vmin;border-radius:50%;z-index:1;
-    background:radial-gradient(circle at 50% 50%,#fff6c0 0%,#ffe066 55%,#ffce4d 70%,rgba(255,206,77,0) 72%);
-    animation:sunpulse 5s ease-in-out infinite;}
-  @keyframes sunpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+    background:linear-gradient(180deg,#79c9ff 0%,#a5e0ff 30%,#d9f2df 60%,#fdf1c7 82%,#ffe7a8 100%);}
+  .sky::after{content:'';position:fixed;inset:0;background:radial-gradient(120% 80% at 50% 120%,rgba(255,214,120,.35),rgba(255,214,120,0) 60%);}
+  .sun{position:fixed;top:6vh;left:50%;transform:translateX(-50%);width:26vmin;height:26vmin;border-radius:50%;z-index:1;
+    background:radial-gradient(circle,#fff7cf 0%,#ffe680 52%,#ffd24d 66%,rgba(255,210,77,0) 70%);
+    animation:sunpulse 6s ease-in-out infinite;}
+  @keyframes sunpulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}}
 
-  .hill{position:fixed;left:-10vw;right:-10vw;border-radius:50%/100% 100% 0 0;z-index:2;}
-  .hill.back{bottom:16vh;height:34vh;background:#8fd07a;}
-  .hill.mid{bottom:8vh;height:30vh;background:#66bd5c;left:-20vw;right:-5vw;}
-  .hill.front{bottom:0;height:22vh;background:#46a94b;left:-5vw;right:-25vw;}
-  .ground{position:fixed;bottom:0;left:0;right:0;height:12vh;background:#3f9e46;z-index:3;}
+  .hill{position:fixed;left:-12vw;right:-12vw;border-radius:50%/100% 100% 0 0;z-index:2;}
+  .hill.h1{bottom:20vh;height:36vh;background:#a3dc8c;}
+  .hill.h2{bottom:11vh;height:32vh;background:#7ecb6b;left:-24vw;right:-6vw;}
+  .hill.h3{bottom:0;height:24vh;background:#54b258;left:-6vw;right:-26vw;}
+  .ground{position:fixed;bottom:0;left:0;right:0;height:13vh;background:linear-gradient(180deg,#4aa64f,#3c8f43);z-index:3;}
 
-  .decor{position:fixed;z-index:3;font-size:9vmin;user-select:none;pointer-events:none;
-    filter:drop-shadow(0 3px 3px rgba(0,60,20,.25));}
-  .cloud{z-index:1;font-size:12vmin;opacity:.95;animation:drift linear infinite;}
-  @keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(130vw)}}
-  .tree{bottom:15vh;font-size:16vmin;}
-  .bird{z-index:2;font-size:6vmin;animation:fly linear infinite;}
-  @keyframes fly{from{transform:translateX(-20vw) translateY(0)}50%{transform:translateX(55vw) translateY(-4vh)}to{transform:translateX(130vw) translateY(0)}}
-  .balloon{z-index:4;font-size:11vmin;bottom:-20vh;animation:rise linear infinite;}
-  @keyframes rise{0%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-60vh) rotate(6deg)}100%{transform:translateY(-120vh) rotate(-6deg)}}
-  .walker{bottom:3vh;font-size:12vmin;z-index:4;left:-15vw;animation:walk linear infinite,bob .8s ease-in-out infinite;}
+  /* acacia tree silhouettes for a proper safari feel */
+  .acacia{position:fixed;bottom:17vh;z-index:2;width:24vmin;fill:#3f7f46;opacity:.9;
+    filter:drop-shadow(0 4px 5px rgba(0,50,20,.15));}
+
+  .decor{position:fixed;z-index:3;user-select:none;pointer-events:none;filter:drop-shadow(0 3px 3px rgba(0,60,20,.22));}
+  .cloud{z-index:1;font-size:12vmin;animation:drift linear infinite;}
+  @keyframes drift{from{transform:translateX(-34vw)}to{transform:translateX(134vw)}}
+  .bird{z-index:2;font-size:5.5vmin;animation:fly linear infinite;}
+  @keyframes fly{0%{transform:translateX(-14vw) translateY(0)}50%{transform:translateX(56vw) translateY(-4vh)}100%{transform:translateX(126vw) translateY(0)}}
+  .walker{bottom:3vh;font-size:11vmin;z-index:4;left:-16vw;animation:walk linear infinite,bob .9s ease-in-out infinite;}
   @keyframes walk{from{left:-16vw}to{left:116vw}}
-  @keyframes bob{0%,100%{margin-bottom:0}50%{margin-bottom:1.4vh}}
+  @keyframes bob{0%,100%{margin-bottom:0}50%{margin-bottom:1.3vh}}
   .walker.flip{transform:scaleX(-1);}
+  .balloon{z-index:5;font-size:11vmin;bottom:-24vh;animation:rise linear infinite;}
+  @keyframes rise{0%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-64vh) rotate(6deg)}100%{transform:translateY(-128vh) rotate(-6deg)}}
 
-  /* ---------- CENTER CARD ---------- */
-  .center{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:3vmin;}
-  .panel{background:rgba(255,255,255,.86);backdrop-filter:blur(3px);border-radius:6vmin;padding:4vmin 6vmin;
-    box-shadow:0 2vmin 5vmin rgba(0,60,30,.3);max-width:min(1100px,92vw);border:1vmin solid #fff;}
-  h1{font-size:9vmin;color:#173a2e;text-shadow:0 4px 0 #ffd76a;line-height:1.02;}
-  .sub{font-size:4.4vmin;color:#2b6b4f;margin-top:1vmin;}
-  .cake{font-size:5vmin;margin-top:1vmin;animation:bob2 1.4s ease-in-out infinite;}
-  @keyframes bob2{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.4vmin)}}
-  .btnrow{display:flex;gap:2.5vmin;justify-content:center;flex-wrap:wrap;margin-top:2.5vmin;}
+  /* ---------------- BUNTING ---------------- */
+  #bunting{position:fixed;top:0;left:0;right:0;height:10vmin;z-index:7;pointer-events:none;}
+  #bunting .string{position:absolute;top:2vmin;left:0;right:0;height:.5vmin;
+    background:linear-gradient(90deg,transparent,#6b4423 4%,#6b4423 96%,transparent);border-radius:99px;}
+  #bunting .flags{position:absolute;top:2vmin;left:0;right:0;display:flex;justify-content:space-evenly;}
+  .flag{width:5.2vmin;height:6.6vmin;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;
+    box-shadow:inset 0 -1vmin 1.5vmin rgba(0,0,0,.12);animation:sway 4s ease-in-out infinite;}
+  @keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+
+  /* ---------------- COVER POSTER ---------------- */
+  .center{position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;padding:12vmin 4vmin 4vmin;}
+  .poster{display:flex;align-items:center;gap:5vmin;flex-wrap:wrap;justify-content:center;
+    background:rgba(255,255,255,.82);backdrop-filter:blur(4px);border:1.1vmin solid #fff;border-radius:6vmin;
+    padding:4.5vmin 6vmin;box-shadow:0 2.4vmin 6vmin rgba(0,60,30,.32);max-width:min(1250px,94vw);}
+
+  /* polaroid photo */
+  .polaroid{position:relative;background:#fff;padding:1.6vmin 1.6vmin 5vmin;border-radius:2vmin;
+    box-shadow:0 2vmin 4vmin rgba(0,0,0,.28);transform:rotate(-4deg);flex:none;}
+  .polaroid img{display:block;width:34vmin;max-width:300px;height:auto;border-radius:1vmin;object-fit:cover;background:#eee;}
+  .polaroid .cap{position:absolute;left:0;right:0;bottom:1.6vmin;text-align:center;font-size:2.3vmin;color:#2b6b4f;font-weight:bold;white-space:nowrap;}
+  .badge6{position:absolute;top:-3vmin;right:-3vmin;width:12vmin;height:12vmin;border-radius:50%;
+    background:radial-gradient(circle at 40% 35%,#ffe27a,#ffb52e);color:#8a4b00;
+    display:flex;align-items:center;justify-content:center;flex-direction:column;line-height:.9;
+    box-shadow:0 1vmin 2vmin rgba(0,0,0,.25),inset 0 0 0 .8vmin #fff;transform:rotate(9deg);}
+  .badge6 .n{font-size:7vmin;font-weight:bold;}
+  .badge6 .w{font-size:2vmin;letter-spacing:.05em;}
+
+  .copy{text-align:left;max-width:56vmin;min-width:min(52vmin,90vw);}
+  .eyebrow{display:inline-block;background:var(--ink);color:var(--gold);font-size:2.6vmin;font-weight:bold;
+    padding:.25em 1em;border-radius:99px;}
+  h1{font-size:9vmin;line-height:.98;color:var(--ink);margin:1.2vmin 0 .4vmin;
+    text-shadow:0 4px 0 var(--gold),0 6px 0 rgba(0,0,0,.08);}
+  h1 .six{color:#ff7a2e;text-shadow:0 4px 0 #ffd76a;}
+  .tagline{font-size:4.2vmin;color:#2b6b4f;font-weight:bold;}
+  .msg{font-size:3vmin;color:#3a5c4d;margin-top:1.4vmin;}
+  .btnrow{display:flex;gap:2.4vmin;flex-wrap:wrap;margin-top:3vmin;align-items:center;}
   .btn{font-family:var(--font);border:none;cursor:pointer;border-radius:99px;font-size:4vmin;font-weight:bold;
-    padding:.5em 1.3em;color:#fff;background:linear-gradient(180deg,#57d98a,#2ecc71);
+    padding:.5em 1.35em;color:#fff;background:linear-gradient(180deg,#57d98a,#2ecc71);
     box-shadow:0 .8vmin 0 #1f9b53,0 1.4vmin 2.4vmin rgba(0,0,0,.2);transition:transform .08s;text-decoration:none;display:inline-block;}
   .btn:active{transform:translateY(.5vmin);}
-  .btn.blue{background:linear-gradient(180deg,#49c8e0,#1fb6c1);box-shadow:0 .8vmin 0 #14808c,0 1.4vmin 2.4vmin rgba(0,0,0,.2);}
+  .btn.sound{background:linear-gradient(180deg,#ffd36b,#ffb52e);color:#7a4200;box-shadow:0 .8vmin 0 #d68a10,0 1.4vmin 2.4vmin rgba(0,0,0,.2);font-size:3.2vmin;}
+  .btn.sound.hint{animation:pulse 1.1s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 
-  /* sound toggle */
-  #soundToggle{position:fixed;top:2.4vmin;right:2.4vmin;z-index:20;background:rgba(255,255,255,.85);border:none;
-    font-family:var(--font);font-size:3vmin;font-weight:bold;color:#2b6b4f;border-radius:99px;padding:.4em 1em;cursor:pointer;
-    box-shadow:0 .6vmin 1.4vmin rgba(0,0,0,.2);}
+  #cf{position:fixed;inset:0;z-index:8;pointer-events:none;}
 
-  /* tap-to-start overlay */
-  #tap{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;flex-direction:column;
-    background:rgba(23,58,46,.78);color:#fff;text-align:center;padding:4vmin;}
-  #tap .big{font-size:8vmin;text-shadow:0 4px 0 #ffd76a;line-height:1.05;}
-  #tap .hint{font-size:4.4vmin;margin-top:2vmin;animation:bob2 1.2s ease-in-out infinite;}
-  #tap.hide{display:none;}
-  .hidden{display:none!important;}
+  @media (max-width:900px){
+    .center{padding:14vmin 4vmin 4vmin;}
+    .copy{text-align:center;} .btnrow{justify-content:center;}
+    h1{font-size:12vmin;} .tagline{font-size:6vmin;}
+  }
 </style>
 </head>
 <body>
   <div class="sky"></div>
   <div class="sun"></div>
 
-  <!-- clouds -->
-  <div class="decor cloud" style="top:8vh;animation-duration:70s">☁️</div>
-  <div class="decor cloud" style="top:20vh;animation-duration:95s;animation-delay:-30s;font-size:9vmin">☁️</div>
-  <div class="decor cloud" style="top:3vh;animation-duration:120s;animation-delay:-60s">⛅</div>
-  <!-- birds -->
-  <div class="decor bird" style="top:16vh;animation-duration:34s">🐦</div>
-  <div class="decor bird" style="top:22vh;animation-duration:44s;animation-delay:-12s">🕊️</div>
+  <!-- clouds & birds -->
+  <div class="decor cloud" style="top:9vh;animation-duration:85s">☁️</div>
+  <div class="decor cloud" style="top:22vh;animation-duration:120s;animation-delay:-50s;font-size:9vmin">☁️</div>
+  <div class="decor bird" style="top:15vh;animation-duration:40s">🐦</div>
+  <div class="decor bird" style="top:19vh;animation-duration:52s;animation-delay:-16s">🕊️</div>
 
-  <div class="hill back"></div>
-  <div class="hill mid"></div>
-  <!-- trees on the horizon -->
-  <div class="decor tree" style="left:4vw">🌴</div>
-  <div class="decor tree" style="left:18vw;font-size:13vmin">🌳</div>
-  <div class="decor tree" style="right:6vw">🌴</div>
-  <div class="decor tree" style="right:20vw;font-size:12vmin">🌳</div>
-  <div class="hill front"></div>
+  <div class="hill h1"></div>
+  <div class="hill h2"></div>
+  <!-- acacia trees -->
+  <svg class="acacia" style="left:3vw" viewBox="0 0 100 80"><path d="M48 80h4V44c9-1 15-4 21-9 8-7 10-16 3-19-3-1-7 0-10 2 1-4-1-8-6-9-6-1-11 3-11 8-4-3-10-3-13 1-3 4-1 9 4 11-6 1-11 5-11 10 0 6 8 10 18 10 3 0 6-.4 8-1z"/></svg>
+  <svg class="acacia" style="right:5vw;width:20vmin" viewBox="0 0 100 80"><path d="M48 80h4V44c9-1 15-4 21-9 8-7 10-16 3-19-3-1-7 0-10 2 1-4-1-8-6-9-6-1-11 3-11 8-4-3-10-3-13 1-3 4-1 9 4 11-6 1-11 5-11 10 0 6 8 10 18 10 3 0 6-.4 8-1z"/></svg>
+  <div class="hill h3"></div>
   <div class="ground"></div>
 
-  <!-- roaming animals along the ground -->
-  <div class="decor walker" style="animation-duration:38s">🦁</div>
-  <div class="decor walker flip" style="animation-duration:52s;animation-delay:-14s;font-size:14vmin">🐘</div>
-  <div class="decor walker" style="animation-duration:30s;animation-delay:-8s">🦓</div>
-  <div class="decor walker" style="animation-duration:60s;animation-delay:-25s;font-size:9vmin">🐊</div>
-  <div class="decor walker flip" style="animation-duration:26s;animation-delay:-5s;font-size:8vmin">🐒</div>
-  <div class="decor walker" style="animation-duration:70s;animation-delay:-40s;font-size:7vmin">🐢</div>
+  <!-- roaming animals -->
+  <div class="decor walker" style="animation-duration:46s">🦁</div>
+  <div class="decor walker flip" style="animation-duration:60s;animation-delay:-18s;font-size:13vmin">🐘</div>
+  <div class="decor walker" style="animation-duration:34s;animation-delay:-9s">🦓</div>
+  <div class="decor walker" style="animation-duration:70s;animation-delay:-30s;font-size:8vmin">🐊</div>
+  <div class="decor walker flip" style="animation-duration:28s;animation-delay:-6s;font-size:7vmin">🐒</div>
 
   <!-- balloons -->
-  <div class="decor balloon" style="left:8vw;animation-duration:16s">🎈</div>
-  <div class="decor balloon" style="left:28vw;animation-duration:20s;animation-delay:-6s">🎈</div>
-  <div class="decor balloon" style="right:14vw;animation-duration:18s;animation-delay:-10s">🎈</div>
-  <div class="decor balloon" style="right:32vw;animation-duration:23s;animation-delay:-3s">🎈</div>
+  <div class="decor balloon" style="left:7vw;animation-duration:18s">🎈</div>
+  <div class="decor balloon" style="left:24vw;animation-duration:22s;animation-delay:-7s">🎈</div>
+  <div class="decor balloon" style="right:9vw;animation-duration:20s;animation-delay:-11s">🎈</div>
+  <div class="decor balloon" style="right:26vw;animation-duration:25s;animation-delay:-3s">🎈</div>
 
-  <button id="soundToggle" onclick="toggleSound(event)">🔊 Party sounds: ON</button>
+  <!-- party bunting -->
+  <div id="bunting"><div class="string"></div><div class="flags" id="flags"></div></div>
 
+  <canvas id="cf"></canvas>
+
+  <!-- COVER POSTER -->
   <div class="center">
-    <div class="panel">
-      <h1>🦁🐊 EZEKIEL IS 6! 🎉</h1>
-      <div class="sub">Animal &amp; Reptile Safari Party</div>
-      <div class="cake">🎂 Welcome to the wildest party in the jungle! 🎈</div>
-      <div class="btnrow">
-        <a class="btn" href="index.html">▶ Start the Game</a>
-        <button class="btn blue" onclick="burst(120)">🎉 Confetti!</button>
+    <div class="poster">
+      <div class="polaroid">
+        <img src="assets/img/ezekiel.jpg" alt="Ezekiel the reptile keeper"
+             onerror="this.style.display='none'">
+        <div class="badge6"><span class="n">6</span><span class="w">YEARS</span></div>
+        <div class="cap">🦎 Reptile Keeper</div>
+      </div>
+      <div class="copy">
+        <span class="eyebrow">🎉 Welcome to the party!</span>
+        <h1>Ezekiel<br>is <span class="six">SIX!</span></h1>
+        <div class="tagline">Animal &amp; Reptile Safari 🦁🐊</div>
+        <div class="msg">Grab a team and get ready for the wildest guessing game in the jungle! 🌴🎈</div>
+        <div class="btnrow">
+          <a class="btn" href="index.html">▶ Start the Game</a>
+          <button class="btn sound hint" id="soundBtn" onclick="onSoundBtn(event)">🔊 Tap for party sounds</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <div id="tap" onclick="startParty()">
-    <div class="big">🦁🐘🐊  Ezekiel's Safari Party  🐒🦓</div>
-    <div class="hint">👆 Tap anywhere to turn on the party sounds!</div>
-  </div>
-
-  <canvas id="cf" style="position:fixed;inset:0;z-index:15;pointer-events:none;"></canvas>
-
 <script>
-/* ---------- ambient animal-sound party bed ---------- */
+/* ---------- bunting ---------- */
+(function(){ const cols=['#ff6b6b','#ffb52e','#ffe14d','#4ecb71','#39b7d6','#8a6bff','#ff8fc7'];
+  const f=document.getElementById('flags'); let html='';
+  for(let i=0;i<18;i++){ html+=`<div class="flag" style="background:${cols[i%cols.length]};animation-delay:${(i%5)*-0.4}s"></div>`; }
+  f.innerHTML=html; })();
+
+/* ---------- ambient party sounds ---------- */
 const SOUNDS=['dog','cat','cow','duck','pig','lion','tiger','elephant','monkey','zebra','hyena','snake','crocodile'];
-let AC=null, pad=null, ambTimer=null, soundOn=true, started=false;
+let AC=null, pad=null, ambTimer=null, soundOn=false, started=false;
 function ac(){ if(!AC) AC=new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==='suspended')AC.resume(); return AC; }
-function makePad(){ // soft warm drone for atmosphere
-  const c=ac(), out=c.createGain(); out.gain.value=0.06; out.connect(c.destination);
-  const freqs=[130.81,196.00,261.63]; const oscs=[];
+function makePad(){
+  const c=ac(), out=c.createGain(); out.gain.value=0.05; out.connect(c.destination);
+  const freqs=[130.81,196.00,261.63], nodes=[];
   freqs.forEach((f,i)=>{ const o=c.createOscillator(),g=c.createGain(),lfo=c.createOscillator(),lg=c.createGain();
     o.type='sine'; o.frequency.value=f*(i===2?1.003:1); g.gain.value=0.5;
     lfo.frequency.value=0.08+i*0.03; lg.gain.value=0.25; lfo.connect(lg).connect(g.gain);
-    o.connect(g).connect(out); o.start(); lfo.start(); oscs.push(o,lfo); });
-  return { stop(){ out.gain.setTargetAtTime(0,c.currentTime,.3); setTimeout(()=>{oscs.forEach(o=>{try{o.stop()}catch(e){}}); try{out.disconnect()}catch(e){}},600); } };
+    o.connect(g).connect(out); o.start(); lfo.start(); nodes.push(o,lfo); });
+  return { stop(){ out.gain.setTargetAtTime(0,c.currentTime,.3); setTimeout(()=>{nodes.forEach(n=>{try{n.stop()}catch(e){}}); try{out.disconnect()}catch(e){}},600); } };
 }
 const cache={};
-function playCritter(){
-  if(!soundOn) return;
-  const id=SOUNDS[Math.floor(Math.random()*SOUNDS.length)];
+function critter(){ if(!soundOn)return; const id=SOUNDS[Math.floor(Math.random()*SOUNDS.length)];
   let a=cache[id]; if(!a){ a=new Audio('assets/sounds/'+id+'.mp3'); cache[id]=a; }
-  a.volume=0.32; a.currentTime=0; a.play().catch(()=>{});
-}
-function scheduleCritter(){ ambTimer=setTimeout(()=>{ playCritter(); scheduleCritter(); }, 3500+Math.random()*5500); }
-function startParty(){
-  document.getElementById('tap').classList.add('hide');
-  if(started) return; started=true;
-  ac(); if(soundOn){ pad=makePad(); playCritter(); } scheduleCritter();
-}
-function toggleSound(e){
-  if(e) e.stopPropagation();
-  soundOn=!soundOn;
-  const b=document.getElementById('soundToggle');
-  b.textContent = soundOn ? '🔊 Party sounds: ON' : '🔇 Party sounds: OFF';
-  if(soundOn){ if(started){ ac(); if(!pad) pad=makePad(); } }
-  else { if(pad){ pad.stop(); pad=null; } }
-}
-// start on first interaction anywhere (browsers need a gesture for audio)
-addEventListener('pointerdown', startParty, {once:false});
-addEventListener('keydown', e=>{ if(e.key===' '||e.key==='Enter'){ startParty(); } });
+  a.volume=0.3; a.currentTime=0; a.play().catch(()=>{}); }
+function schedule(){ ambTimer=setTimeout(()=>{ critter(); schedule(); }, 3500+Math.random()*5500); }
+function startSound(){ if(started)return; started=true; soundOn=true; ac(); pad=makePad(); critter(); schedule(); updateBtn(); }
+function stopSound(){ soundOn=false; if(ambTimer){clearTimeout(ambTimer);ambTimer=null;} if(pad){pad.stop();pad=null;} updateBtn(); }
+function updateBtn(){ const b=document.getElementById('soundBtn'); b.classList.remove('hint');
+  b.textContent = soundOn ? '🔊 Party sounds: ON' : '🔇 Party sounds: OFF'; }
+function onSoundBtn(e){ e.stopPropagation(); if(!started){ startSound(); } else if(soundOn){ stopSound(); } else { soundOn=true; ac(); if(!pad)pad=makePad(); schedule(); updateBtn(); } }
+// first tap anywhere turns the party sounds on
+addEventListener('pointerdown', ()=>{ if(!started) startSound(); });
 
-/* ---------- confetti ---------- */
-const cv=document.getElementById('cf'),cx=cv.getContext('2d');
-let parts=[],raf=false;
+/* ---------- gentle confetti ---------- */
+const cv=document.getElementById('cf'),cx=cv.getContext('2d'); let parts=[],raf=false;
 function rs(){cv.width=innerWidth;cv.height=innerHeight;} rs(); addEventListener('resize',rs);
-const COLS=['#f5a623','#ff6b35','#2ecc71','#1fb6c1','#e94b5a','#ffd76a','#ffffff'];
+const COLS=['#f5a623','#ff6b35','#2ecc71','#1fb6c1','#e94b5a','#ffd76a','#8a6bff','#ffffff'];
 function burst(n){ for(let i=0;i<n;i++) parts.push({x:Math.random()*innerWidth,y:-20,
-  vx:(Math.random()-.5)*4,vy:Math.random()*3+2,g:.22,s:6+Math.random()*10,r:Math.random()*6,vr:(Math.random()-.5)*.4,
+  vx:(Math.random()-.5)*3.4,vy:Math.random()*2.4+1.6,g:.16,s:6+Math.random()*9,r:Math.random()*6,vr:(Math.random()-.5)*.35,
   col:COLS[Math.floor(Math.random()*COLS.length)]}); if(!raf){raf=true;requestAnimationFrame(loop);} }
 function loop(){ cx.clearRect(0,0,cv.width,cv.height); parts=parts.filter(p=>p.y<cv.height+40);
   parts.forEach(p=>{p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);
     cx.fillStyle=p.col;cx.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);cx.restore();});
-  if(parts.length)requestAnimationFrame(loop); else {raf=false;} }
-// gentle confetti every so often for ambience (time-based, no random interval needed)
-setInterval(()=>{ if(!document.hidden) burst(24); }, 6000);
+  if(parts.length)requestAnimationFrame(loop); else raf=false; }
+setInterval(()=>{ if(!document.hidden) burst(18); }, 5000);
+burst(40);
 </script>
 </body>
 </html>
