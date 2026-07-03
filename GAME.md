@@ -27,7 +27,10 @@ during the guessing rounds so the animal clips are clear.
 
 ## 🎮 How to play (for the grown-up host)
 
-1. Set the number of teams (up to 6) and turns per team, and rename teams if you like.
+1. Set the number of teams (up to 6) and turns per team, rename teams if you like, and
+   (optional) paste the kids' names in the box — press **Make Teams** and the game randomly
+   splits everyone into the teams and shows you each roster. **Shuffle again** until it looks
+   fair, then **Start**. (The party guest list is already pre-filled — just edit if someone's away.)
 2. Teams take turns. The team whose turn it is gets first guess.
 3. Press **Play Sound** (sound round) or just show the picture (picture round). Let the kids shout!
 4. Press **Reveal Answer**.

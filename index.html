@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Ezekiel's Animal Safari 🦁🐊 — Turns 6!</title>
+<title>Ezekiel &amp; Ezariah's Animal Safari 🦁🐊</title>
 <style>
   :root{
     --t0:#f5a623; --t1:#ff6b35; --t2:#2ecc71; --t3:#1fb6c1; --t4:#b06a34; --t5:#e94b5a;
@@ -100,6 +100,21 @@
   .teamfield .em{font-size:4.4vmin;flex:none;}
   .teamfield input{font-family:var(--font);font-size:3vmin;border:none;background:transparent;width:100%;font-weight:bold;color:#173a2e;outline:none;}
   .esttime{font-size:2.8vmin;opacity:.8;margin-top:.5em;}
+  .kidsbox{margin:1.5vmin 0;text-align:left;}
+  .kidsbox label{font-size:2.7vmin;font-weight:bold;color:#2b6b4f;display:block;margin-bottom:.6vmin;}
+  .kidsbox label span{font-weight:normal;font-size:2.2vmin;opacity:.72;}
+  .kidsbox textarea{width:100%;font-family:var(--font);font-size:2.8vmin;line-height:1.5;border:.5vmin solid #cfe3d7;
+    border-radius:2vmin;padding:1.2vmin 2vmin;resize:vertical;color:#173a2e;background:#f9fdfb;outline:none;min-height:13vmin;}
+  .kidsbox textarea:focus{border-color:#2ecc71;}
+  /* team rosters */
+  .rosterwrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.6vmin;margin:1.6vmin 0;}
+  .rosterteam{background:#f6faf8;border-radius:2.4vmin;border:.55vmin solid var(--c);overflow:hidden;text-align:left;}
+  .rosterteam .hd{background:var(--c);color:#fff;font-size:2.8vmin;font-weight:bold;padding:.4em .7em;display:flex;align-items:center;gap:.35em;}
+  .rosterteam .hd .nm{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .rosterteam .hd .n{flex:none;font-size:2.3vmin;background:rgba(255,255,255,.28);border-radius:99px;padding:0 .5em;}
+  .rosterteam ul{list-style:none;padding:.8vmin 1.6vmin 1.1vmin;margin:0;}
+  .rosterteam li{font-size:2.5vmin;padding:.08em 0;color:#173a2e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .rosterteam li.empty{opacity:.5;font-style:italic;}
   details{margin-top:1.5vmin;text-align:left;background:#f2f9f5;border-radius:2vmin;padding:1vmin 2.5vmin;}
   summary{font-size:3vmin;cursor:pointer;font-weight:bold;}
   details p{font-size:2.6vmin;}
@@ -217,8 +232,8 @@
 <section id="screen-title" class="screen active">
   <div class="card">
     <div class="tag">🎉 It's a Birthday Party! 🎉</div>
-    <h1>Ezekiel's Animal&nbsp;&amp; Reptile<br>Sound Safari! 🦁🐊</h1>
-    <div class="subtitle">Ezekiel turns <b>6</b>! Guess the animal by its <b>sound</b> or <b>picture</b>.</div>
+    <h1>Ezekiel &amp; Ezariah's<br>Animal &amp; Reptile Safari! 🦁🐊</h1>
+    <div class="subtitle">Team vs team — guess the animal by its <b>sound</b> or <b>picture</b>!</div>
     <div class="row">
       <img class="hero" src="assets/img/ezekiel.jpg" alt="Ezekiel the reptile keeper"
            onerror="this.style.display='none'">
@@ -259,6 +274,38 @@
       </div>
     </div>
     <div class="teamfields" id="teamfields"></div>
+    <div class="kidsbox">
+      <label for="kids">🧒 Kids at the party <span>(optional — type one name per line and we'll split them into the teams for you)</span></label>
+      <textarea id="kids" rows="6" placeholder="Ava&#10;Liam&#10;Noah&#10;...">Ezekiel
+Emmanuel
+Jack
+Jordan
+Jade
+Amelia
+Patrick
+Dimitri
+Ted
+Silas
+Brayden
+Adriana
+Rafa
+Zechariah
+Henry
+Leon
+Ojas
+Elora
+Kalesi
+Dominic
+Ariel
+Gia
+Simeon
+Claire
+Hazel
+Oliver
+Simeon's sibling 1
+Simeon's sibling 2
+Simeon's sibling 3</textarea>
+    </div>
     <div class="esttime" id="estimate"></div>
     <details>
       <summary>👀 How to play (for the grown-up)</summary>
@@ -271,14 +318,28 @@
     </details>
     <div style="margin-top:2vmin" class="row">
       <button class="btn ghost" onclick="show('screen-title')">◀ Back</button>
-      <button class="btn big green" onclick="startGame()">Start the Safari! 🚀</button>
+      <button class="btn big green" onclick="goTeams()">Make Teams! 🎲</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ROSTERS ============ -->
+<section id="screen-teams" class="screen">
+  <div class="card">
+    <h2>🎲 Here are the teams!</h2>
+    <div class="rosterwrap" id="rosterwrap"></div>
+    <div class="esttime" id="rosterhint">Not fair? Give it another shuffle! 🔀</div>
+    <div style="margin-top:2vmin" class="row">
+      <button class="btn ghost" onclick="show('screen-setup')">◀ Back</button>
+      <button class="btn blue" onclick="shuffleTeams()">🔀 Shuffle again</button>
+      <button class="btn big green" onclick="launchGame()">Start! 🚀</button>
     </div>
   </div>
 </section>
 
 <!-- ============ GAME ============ -->
 <div id="topbar" style="display:none">
-  <div class="title">🦁 Ezekiel's Animal Safari</div>
+  <div class="title">🦁 Ezekiel &amp; Ezariah's Safari</div>
   <div class="right">
     <span id="progress"></span>
     <button class="mini" onclick="if(confirm('Restart the whole game?'))location.reload()">↻ Restart</button>
@@ -321,7 +382,7 @@
       <button class="btn green" onclick="playAgain()">Play Again 🔁</button>
       <button class="btn ghost" onclick="location.reload()">New Teams</button>
     </div>
-    <div class="esttime">🎂 Happy 6th Birthday, Ezekiel! 🎂</div>
+    <div class="esttime">🎂 Happy Birthday, Ezekiel &amp; Ezariah! 🎂</div>
   </div>
 </section>
 
@@ -473,15 +534,35 @@ function buildSequence(){
   }
   return seq;
 }
-function startGame(){
-  const teams=[];
+let pendingTeams=null, kidList=[];
+function parseKids(){ const v=document.getElementById('kids')?.value||'';
+  return v.split(/[\n,]+/).map(s=>s.trim()).filter(Boolean); }
+function assignMembers(){ pendingTeams.forEach(t=>t.members=[]);
+  shuffle(kidList).forEach((k,i)=>pendingTeams[i%pendingTeams.length].members.push(k)); }
+function shuffleTeams(){ assignMembers(); renderTeams(); }
+function renderTeams(){
+  const w=document.getElementById('rosterwrap'); w.innerHTML='';
+  pendingTeams.forEach(t=>{
+    const d=document.createElement('div'); d.className='rosterteam'; d.style.setProperty('--c',t.c);
+    const lis = t.members.length ? t.members.map(m=>`<li>🧒 ${m}</li>`).join('') : '<li class="empty">— add names on the previous screen —</li>';
+    d.innerHTML=`<div class="hd"><span>${t.em}</span><span class="nm">${t.name}</span><span class="n">${t.members.length}</span></div><ul>${lis}</ul>`;
+    w.appendChild(d);
+  });
+}
+// From setup → build the teams; if kids were entered, show the roster screen, else start.
+function goTeams(){
+  pendingTeams=[];
   for(let i=0;i<numTeams;i++){ const p=TEAM_PRESETS[i];
     const nm=(document.getElementById('tn'+i)?.value||p.name).trim()||p.name;
-    teams.push({em:p.em,name:nm,c:p.c,score:0});
+    pendingTeams.push({em:p.em,name:nm,c:p.c,score:0,members:[]});
   }
-  // preload audio
+  kidList=parseKids();
+  if(kidList.length>0){ assignMembers(); renderTeams(); show('screen-teams'); }
+  else { launchGame(); }
+}
+function launchGame(){
   ANIMALS.forEach(a=>{ if(!audioCache[a.id]){ const au=new Audio('assets/sounds/'+a.id+'.mp3'); au.preload='auto'; audioCache[a.id]=au; }});
-  state={teams, seq:buildSequence(), idx:0, revealed:false};
+  state={teams:pendingTeams, seq:buildSequence(), idx:0, revealed:false};
   stopAmbient();               // quiet the party bed so guessing sounds are clear
   renderScoreboard();
   show('screen-game');
@@ -660,7 +741,8 @@ function loop(){
 addEventListener('keydown',e=>{
   const active=document.querySelector('.screen.active')?.id;
   if(active==='screen-title'){ if(e.key==='Enter'||e.key===' '){e.preventDefault();goSetup();} return; }
-  if(active==='screen-setup'){ if(e.key==='Enter'){e.preventDefault();startGame();} return; }
+  if(active==='screen-setup'){ return; }  // let the name/kids inputs handle typing (incl. Enter)
+  if(active==='screen-teams'){ if(e.key==='Enter'){e.preventDefault();launchGame();} else if(e.key==='s'||e.key==='S'){shuffleTeams();} return; }
   if(active==='screen-break'){ if(e.key===' '||e.key==='Enter'){e.preventDefault();endBreak();} return; }
   if(active==='screen-end'){ if(e.key==='Enter'){e.preventDefault();playAgain();} return; }
   if(active==='screen-game'){
