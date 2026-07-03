@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🦁 Ezekiel is 6! — Safari Party 🐊</title>
+<title>🎉 Welcome to Ezekiel &amp; Ezariah's Birthday Party! 🎈</title>
 <style>
   :root{
     --font:'Comic Sans MS','Comic Sans','Chalkboard SE','Baloo 2',system-ui,'Segoe UI',sans-serif;
@@ -17,7 +17,7 @@
   .sky{position:fixed;inset:0;z-index:0;
     background:linear-gradient(180deg,#79c9ff 0%,#a5e0ff 30%,#d9f2df 60%,#fdf1c7 82%,#ffe7a8 100%);}
   .sky::after{content:'';position:fixed;inset:0;background:radial-gradient(120% 80% at 50% 120%,rgba(255,214,120,.35),rgba(255,214,120,0) 60%);}
-  .sun{position:fixed;top:6vh;left:50%;transform:translateX(-50%);width:26vmin;height:26vmin;border-radius:50%;z-index:1;
+  .sun{position:fixed;top:5vh;left:50%;transform:translateX(-50%);width:24vmin;height:24vmin;border-radius:50%;z-index:1;
     background:radial-gradient(circle,#fff7cf 0%,#ffe680 52%,#ffd24d 66%,rgba(255,210,77,0) 70%);
     animation:sunpulse 6s ease-in-out infinite;}
   @keyframes sunpulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}}
@@ -28,7 +28,6 @@
   .hill.h3{bottom:0;height:24vh;background:#54b258;left:-6vw;right:-26vw;}
   .ground{position:fixed;bottom:0;left:0;right:0;height:13vh;background:linear-gradient(180deg,#4aa64f,#3c8f43);z-index:3;}
 
-  /* acacia tree silhouettes for a proper safari feel */
   .acacia{position:fixed;bottom:17vh;z-index:2;width:24vmin;fill:#3f7f46;opacity:.9;
     filter:drop-shadow(0 4px 5px rgba(0,50,20,.15));}
 
@@ -53,47 +52,38 @@
     box-shadow:inset 0 -1vmin 1.5vmin rgba(0,0,0,.12);animation:sway 4s ease-in-out infinite;}
   @keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
 
-  /* ---------------- COVER POSTER ---------------- */
+  /* ---------------- WELCOME POSTER ---------------- */
   .center{position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;padding:12vmin 4vmin 4vmin;}
-  .poster{display:flex;align-items:center;gap:5vmin;flex-wrap:wrap;justify-content:center;
-    background:rgba(255,255,255,.82);backdrop-filter:blur(4px);border:1.1vmin solid #fff;border-radius:6vmin;
-    padding:4.5vmin 6vmin;box-shadow:0 2.4vmin 6vmin rgba(0,60,30,.32);max-width:min(1250px,94vw);}
+  .poster{display:flex;flex-direction:column;align-items:center;text-align:center;
+    background:rgba(255,255,255,.85);backdrop-filter:blur(4px);border:1.1vmin solid #fff;border-radius:6vmin;
+    padding:5vmin 7vmin;box-shadow:0 2.4vmin 6vmin rgba(0,60,30,.32);max-width:min(1250px,94vw);}
+  .eyebrow{display:inline-block;background:var(--ink);color:var(--gold);font-size:3vmin;font-weight:bold;
+    letter-spacing:.04em;padding:.3em 1.2em;border-radius:99px;}
+  .names{font-size:8.6vmin;line-height:1;color:var(--ink);font-weight:bold;margin:2vmin 0 .3vmin;
+    text-shadow:0 4px 0 var(--gold),0 6px 0 rgba(0,0,0,.06);}
+  .names .amp{color:#ff7a2e;}
+  h1{font-size:8vmin;line-height:1;color:#ff7a2e;text-shadow:0 4px 0 #ffd76a,0 6px 0 rgba(0,0,0,.06);}
+  .cakes{font-size:8vmin;margin-top:1.6vmin;letter-spacing:.4vmin;animation:bob2 1.6s ease-in-out infinite;}
+  @keyframes bob2{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.4vmin)}}
+  .msg{font-size:3.4vmin;color:#3a5c4d;font-weight:bold;margin-top:1.6vmin;}
 
-  /* polaroid photo */
-  .polaroid{position:relative;background:#fff;padding:1.6vmin 1.6vmin 5vmin;border-radius:2vmin;
-    box-shadow:0 2vmin 4vmin rgba(0,0,0,.28);transform:rotate(-4deg);flex:none;}
-  .polaroid img{display:block;width:34vmin;max-width:300px;height:auto;border-radius:1vmin;object-fit:cover;background:#eee;}
-  .polaroid .cap{position:absolute;left:0;right:0;bottom:1.6vmin;text-align:center;font-size:2.3vmin;color:#2b6b4f;font-weight:bold;white-space:nowrap;}
-  .badge6{position:absolute;top:-3vmin;right:-3vmin;width:12vmin;height:12vmin;border-radius:50%;
-    background:radial-gradient(circle at 40% 35%,#ffe27a,#ffb52e);color:#8a4b00;
-    display:flex;align-items:center;justify-content:center;flex-direction:column;line-height:.9;
-    box-shadow:0 1vmin 2vmin rgba(0,0,0,.25),inset 0 0 0 .8vmin #fff;transform:rotate(9deg);}
-  .badge6 .n{font-size:7vmin;font-weight:bold;}
-  .badge6 .w{font-size:2vmin;letter-spacing:.05em;}
+  .startlink{display:inline-block;margin-top:3.4vmin;font-family:var(--font);font-size:2.9vmin;font-weight:bold;
+    color:#2b6b4f;background:rgba(255,255,255,.8);border:.45vmin solid #bfe0cd;border-radius:99px;
+    padding:.5em 1.3em;text-decoration:none;box-shadow:0 .6vmin 0 #bfe0cd;transition:transform .08s;}
+  .startlink:active{transform:translateY(.5vmin);box-shadow:0 .2vmin 0 #bfe0cd;}
 
-  .copy{text-align:left;max-width:56vmin;min-width:min(52vmin,90vw);}
-  .eyebrow{display:inline-block;background:var(--ink);color:var(--gold);font-size:2.6vmin;font-weight:bold;
-    padding:.25em 1em;border-radius:99px;}
-  h1{font-size:9vmin;line-height:.98;color:var(--ink);margin:1.2vmin 0 .4vmin;
-    text-shadow:0 4px 0 var(--gold),0 6px 0 rgba(0,0,0,.08);}
-  h1 .six{color:#ff7a2e;text-shadow:0 4px 0 #ffd76a;}
-  .tagline{font-size:4.2vmin;color:#2b6b4f;font-weight:bold;}
-  .msg{font-size:3vmin;color:#3a5c4d;margin-top:1.4vmin;}
-  .btnrow{display:flex;gap:2.4vmin;flex-wrap:wrap;margin-top:3vmin;align-items:center;}
-  .btn{font-family:var(--font);border:none;cursor:pointer;border-radius:99px;font-size:4vmin;font-weight:bold;
-    padding:.5em 1.35em;color:#fff;background:linear-gradient(180deg,#57d98a,#2ecc71);
-    box-shadow:0 .8vmin 0 #1f9b53,0 1.4vmin 2.4vmin rgba(0,0,0,.2);transition:transform .08s;text-decoration:none;display:inline-block;}
-  .btn:active{transform:translateY(.5vmin);}
-  .btn.sound{background:linear-gradient(180deg,#ffd36b,#ffb52e);color:#7a4200;box-shadow:0 .8vmin 0 #d68a10,0 1.4vmin 2.4vmin rgba(0,0,0,.2);font-size:3.2vmin;}
-  .btn.sound.hint{animation:pulse 1.1s ease-in-out infinite;}
-  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  /* sound toggle (top-right) */
+  #soundBtn{position:fixed;top:2.6vmin;right:2.6vmin;z-index:20;font-family:var(--font);border:none;cursor:pointer;
+    font-size:2.8vmin;font-weight:bold;color:#7a4200;background:rgba(255,255,255,.88);border-radius:99px;
+    padding:.45em 1em;box-shadow:0 .6vmin 1.4vmin rgba(0,0,0,.2);}
+  #soundBtn.hint{animation:pulse 1.1s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 
   #cf{position:fixed;inset:0;z-index:8;pointer-events:none;}
 
   @media (max-width:900px){
-    .center{padding:14vmin 4vmin 4vmin;}
-    .copy{text-align:center;} .btnrow{justify-content:center;}
-    h1{font-size:12vmin;} .tagline{font-size:6vmin;}
+    .center{padding:15vmin 4vmin 4vmin;}
+    .names{font-size:11vmin;} h1{font-size:10vmin;}
   }
 </style>
 </head>
@@ -101,7 +91,6 @@
   <div class="sky"></div>
   <div class="sun"></div>
 
-  <!-- clouds & birds -->
   <div class="decor cloud" style="top:9vh;animation-duration:85s">☁️</div>
   <div class="decor cloud" style="top:22vh;animation-duration:120s;animation-delay:-50s;font-size:9vmin">☁️</div>
   <div class="decor bird" style="top:15vh;animation-duration:40s">🐦</div>
@@ -109,49 +98,37 @@
 
   <div class="hill h1"></div>
   <div class="hill h2"></div>
-  <!-- acacia trees -->
   <svg class="acacia" style="left:3vw" viewBox="0 0 100 80"><path d="M48 80h4V44c9-1 15-4 21-9 8-7 10-16 3-19-3-1-7 0-10 2 1-4-1-8-6-9-6-1-11 3-11 8-4-3-10-3-13 1-3 4-1 9 4 11-6 1-11 5-11 10 0 6 8 10 18 10 3 0 6-.4 8-1z"/></svg>
   <svg class="acacia" style="right:5vw;width:20vmin" viewBox="0 0 100 80"><path d="M48 80h4V44c9-1 15-4 21-9 8-7 10-16 3-19-3-1-7 0-10 2 1-4-1-8-6-9-6-1-11 3-11 8-4-3-10-3-13 1-3 4-1 9 4 11-6 1-11 5-11 10 0 6 8 10 18 10 3 0 6-.4 8-1z"/></svg>
   <div class="hill h3"></div>
   <div class="ground"></div>
 
-  <!-- roaming animals -->
   <div class="decor walker" style="animation-duration:46s">🦁</div>
   <div class="decor walker flip" style="animation-duration:60s;animation-delay:-18s;font-size:13vmin">🐘</div>
   <div class="decor walker" style="animation-duration:34s;animation-delay:-9s">🦓</div>
   <div class="decor walker" style="animation-duration:70s;animation-delay:-30s;font-size:8vmin">🐊</div>
   <div class="decor walker flip" style="animation-duration:28s;animation-delay:-6s;font-size:7vmin">🐒</div>
 
-  <!-- balloons -->
   <div class="decor balloon" style="left:7vw;animation-duration:18s">🎈</div>
   <div class="decor balloon" style="left:24vw;animation-duration:22s;animation-delay:-7s">🎈</div>
   <div class="decor balloon" style="right:9vw;animation-duration:20s;animation-delay:-11s">🎈</div>
   <div class="decor balloon" style="right:26vw;animation-duration:25s;animation-delay:-3s">🎈</div>
 
-  <!-- party bunting -->
   <div id="bunting"><div class="string"></div><div class="flags" id="flags"></div></div>
 
   <canvas id="cf"></canvas>
 
-  <!-- COVER POSTER -->
+  <button id="soundBtn" class="hint" onclick="onSoundBtn(event)">🔊 Tap for party sounds</button>
+
+  <!-- WELCOME POSTER -->
   <div class="center">
     <div class="poster">
-      <div class="polaroid">
-        <img src="assets/img/ezekiel.jpg" alt="Ezekiel the reptile keeper"
-             onerror="this.style.display='none'">
-        <div class="badge6"><span class="n">6</span><span class="w">YEARS</span></div>
-        <div class="cap">🦎 Reptile Keeper</div>
-      </div>
-      <div class="copy">
-        <span class="eyebrow">🎉 Welcome to the party!</span>
-        <h1>Ezekiel<br>is <span class="six">SIX!</span></h1>
-        <div class="tagline">Animal &amp; Reptile Safari 🦁🐊</div>
-        <div class="msg">Grab a team and get ready for the wildest guessing game in the jungle! 🌴🎈</div>
-        <div class="btnrow">
-          <a class="btn" href="index.html">▶ Start the Game</a>
-          <button class="btn sound hint" id="soundBtn" onclick="onSoundBtn(event)">🔊 Tap for party sounds</button>
-        </div>
-      </div>
+      <span class="eyebrow">🎉 WELCOME TO 🎉</span>
+      <div class="names">Ezekiel <span class="amp">&amp;</span> Ezariah's</div>
+      <h1>Birthday Party!</h1>
+      <div class="cakes">🎂🎈🎁🥳🎈🎂</div>
+      <div class="msg">So happy you're here — let's celebrate! 🎉</div>
+      <a class="startlink" href="index.html">🎮 Start the party game ▶</a>
     </div>
   </div>
 
@@ -185,7 +162,6 @@ function stopSound(){ soundOn=false; if(ambTimer){clearTimeout(ambTimer);ambTime
 function updateBtn(){ const b=document.getElementById('soundBtn'); b.classList.remove('hint');
   b.textContent = soundOn ? '🔊 Party sounds: ON' : '🔇 Party sounds: OFF'; }
 function onSoundBtn(e){ e.stopPropagation(); if(!started){ startSound(); } else if(soundOn){ stopSound(); } else { soundOn=true; ac(); if(!pad)pad=makePad(); schedule(); updateBtn(); } }
-// first tap anywhere turns the party sounds on
 addEventListener('pointerdown', ()=>{ if(!started) startSound(); });
 
 /* ---------- gentle confetti ---------- */
